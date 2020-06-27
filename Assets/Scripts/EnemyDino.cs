@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyDino : MonoBehaviour
 {
+    public int maxMoviment = 5;
     protected float rightLimit; 
     protected float leftLimit; 
     protected int direction = 1;
@@ -21,8 +22,8 @@ public class EnemyDino : MonoBehaviour
         rendererRef = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
 
-        rightLimit = transform.position.x + 5f;
-        leftLimit = transform.position.x - 5f;
+        rightLimit = transform.position.x + maxMoviment;
+        leftLimit = transform.position.x - maxMoviment;
 
     }
 

@@ -42,6 +42,7 @@
      <Compile Include="Assets\Character\Sepiroth\Demo\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Character\Sepiroth\Demo\Scripts\SceneSelecter.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\EnemyCandy.cs" />
      <Compile Include="Assets\Scripts\EnemyDino.cs" />
      <Compile Include="Assets\Scripts\EnemyFrog.cs" />
      <Compile Include="Assets\Scripts\EnemySaw.cs" />

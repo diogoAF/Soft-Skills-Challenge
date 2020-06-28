@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public int health = 100;
+    public float speed = 5f;
     public Animator anime;
     public Vector2 jumpHeight = new Vector2(0,8);
     public Rigidbody2D rb;
@@ -76,7 +77,7 @@ public class Player : MonoBehaviour {
 
     private void Move(int direction){
         // Move the character by finding the target velocity
-        Vector3 targetVelocity = new Vector2(direction * 5f, rb.velocity.y);
+        Vector3 targetVelocity = new Vector2(direction * speed, rb.velocity.y);
         // And then smoothing it out and applying it to the character
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         isRunning = true;

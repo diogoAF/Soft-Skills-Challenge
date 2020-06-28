@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour{
     
     void FixedUpdate(){
         // We put the player's transform into the camera's transform
-        this.transform.position = new Vector3(followTransform.position.x, followTransform.position.y, this.transform.position.z);
+        this.transform.position = new Vector3(followTransform.position.x, followTransform.position.y + 3, this.transform.position.z);
         
     }
 }

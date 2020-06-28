@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\EnemyDino.cs" />
      <Compile Include="Assets\Scripts\EnemyFrog.cs" />
      <Compile Include="Assets\Scripts\EnemySaw.cs" />
+     <Compile Include="Assets\Scripts\EnemyWhiteYeti.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <None Include="Assets\Character\Sepiroth\LICENSE.txt" />
      <None Include="Assets\Character\Sepiroth\README.txt" />

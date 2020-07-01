@@ -34,7 +34,7 @@ public class EnemyFrog : MonoBehaviour
     }
 
     private void Move(){
-Debug.Log("rb.angularVelocity " + rb.angularVelocity);
+
         if(hasToChangeDirection()) {
             direction *= -1;
             Flip();

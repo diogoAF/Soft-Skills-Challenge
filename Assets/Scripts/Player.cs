@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public int health = 100;
+    public int health = 3;
     public float speed = 5f;
     public Animator anime;
     public Vector2 jumpHeight = new Vector2(0,8);
     public Rigidbody2D rb;
     public GameObject gameOverText;
     public GameObject restartButton;
+    public GameObject health_1, health_2, health_3;
+    protected int playerLayer, enemyLayer;
+    protected bool coroutineAllowed = true;
     protected SpriteRenderer rendererRef;
     private bool facingLeft = true;  // For determining which way the player is currently facing.
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
@@ -26,8 +29,21 @@ public class Player : MonoBehaviour {
     void Start() {
         rendererRef = GetComponent<SpriteRenderer>();
 
+        // Game Over
         gameOverText.SetActive(false);
         restartButton.SetActive(false);
+
+        // Health
+        playerLayer = this.gameObject.layer;
+        //enemyLayer = LayerMask.NameToLayer("Enemy");
+        //Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false);
+        health_1 = GameObject.Find("Health_1");
+        health_2 = GameObject.Find("Health_2");
+        health_3 = GameObject.Find("Health_3");
+        health_1.SetActive(true);
+        health_2.SetActive(true);
+        health_3.SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -36,7 +52,6 @@ public class Player : MonoBehaviour {
 
         isRunning = false;
         isAttacking = false;
-        isGettingHit = false;
 
         // Verifica se está pulando ou caindo
         if(rb.velocity.y == 0) {
@@ -46,20 +61,21 @@ public class Player : MonoBehaviour {
         // Death
         if(health <= 0 || isDead) {
             isDead = true;
-            anime.SetBool("isDead", isDead);
+            anime.Play("die");
             return;
         }
 
         // Jump
         if(Input.GetKey(KeyCode.UpArrow) && rb.velocity.y == 0){
+            anime.Play("jump");
             rb.AddForce(jumpHeight, ForceMode2D.Impulse);
-            isJumping = true;
         }
         
 
         // Attacking
         if(Input.GetKey(KeyCode.LeftControl)){
             isAttacking = true;
+            //anime.Play("attack");
         }
 
         // Running
@@ -73,9 +89,7 @@ public class Player : MonoBehaviour {
 
         // Setting Animator
         anime.SetBool("isRunning", isRunning);
-        anime.SetBool("isJumping", isJumping);
         anime.SetBool("isAttacking", isAttacking);
-        anime.SetBool("isGettingHit", isGettingHit);
 
         transform.position = actualPosition;  
     }
@@ -99,10 +113,38 @@ public class Player : MonoBehaviour {
 	}
 
     void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject.tag == "Enemy"){
-            isDead = true;
-            gameOverText.SetActive(true);
-            restartButton.SetActive(true);
+        if(!isDead){
+            if(col.gameObject.tag == "Enemy"){
+                health -= 1;
+                enemyLayer = col.gameObject.layer;
+                anime.Play("get_hit");
+                switch(health) {
+                    case 2:
+                        health_3.gameObject.SetActive(false);
+                        if(coroutineAllowed) StartCoroutine("Immortal");
+                        break;
+                    case 1:
+                        health_2.gameObject.SetActive(false);
+                        if(coroutineAllowed) StartCoroutine("Immortal");
+                        break;
+                    case 0:
+                        health_1.gameObject.SetActive(false);
+                        if(coroutineAllowed) StartCoroutine("Immortal");
+                        isDead = true;
+                        gameOverText.SetActive(true);
+                        restartButton.SetActive(true);
+                        break;
+                }
+            }
+            
         }
+    }
+
+    IEnumerator Immortal(){
+        coroutineAllowed = false;
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true);
+        yield return new WaitForSeconds(3f);
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false);
+        coroutineAllowed = true;
     }
 }

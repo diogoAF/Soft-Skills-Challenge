@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4263204670412396}
   - component: {fileID: 212540843149857366}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4341399035434172}
   - component: {fileID: 212081105023229130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerRArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4714437595949412}
   - component: {fileID: 212772237232998766}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperRLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4994405454029856}
   - component: {fileID: 212614736730643718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerLLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4133364482879178}
   - component: {fileID: 212390145568637856}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerLArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4694564352632930}
   - component: {fileID: 212737046498299566}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4470372736899020}
   - component: {fileID: 212030410344197698}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4288114860031810}
   - component: {fileID: 212954068105131974}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,9 +669,9 @@ GameObject:
   - component: {fileID: 212625381362203560}
   - component: {fileID: 595542161}
   - component: {fileID: 595542164}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Little_Cat_GirlRig
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -788,11 +788,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd2b6ba1ad1a754e844a28517e277bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 3
   speed: 10
   anime: {fileID: 95539518672861730}
   jumpHeight: {x: 0, y: 8}
   rb: {fileID: 2062796052}
+  gameOverText: {fileID: 0}
+  restartButton: {fileID: 0}
+  health_1: {fileID: 0}
+  health_2: {fileID: 0}
+  health_3: {fileID: 0}
   m_MovementSmoothing: 0.05
 --- !u!1 &1574947027594170
 GameObject:
@@ -804,7 +809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4966768418217506}
   - component: {fileID: 212319500087183832}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerRLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4882093775515944}
   - component: {fileID: 212119658012040076}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperLLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4497445806554122}
   - component: {fileID: 2062796052}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Little_Cat_Girl
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1020,7 +1025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4670536269388996}
   - component: {fileID: 212168531553543228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperRArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1102,7 +1107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4727501327519874}
   - component: {fileID: 212870681260380966}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperLArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

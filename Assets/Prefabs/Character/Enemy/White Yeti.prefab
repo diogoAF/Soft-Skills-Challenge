@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4893963479968447165}
   - component: {fileID: 4893963479968447164}
   - component: {fileID: 4893963479968447167}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: White Yeti
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,5 +154,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6aaa0fc397eea44ea412cd21fd7b3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoviment: 10
+  maxMoviment: 5
   m_MovementSmoothing: 0.05

@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
     public Animator anime;
     public Vector2 jumpHeight = new Vector2(0,8);
     public Rigidbody2D rb;
+    public GameObject gameOverText;
+    public GameObject restartButton;
     protected SpriteRenderer rendererRef;
     private bool facingLeft = true;  // For determining which way the player is currently facing.
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
@@ -23,6 +25,9 @@ public class Player : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         rendererRef = GetComponent<SpriteRenderer>();
+
+        gameOverText.SetActive(false);
+        restartButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -92,4 +97,12 @@ public class Player : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    void OnCollisionEnter2D(Collision2D col){
+        if(col.gameObject.tag == "Enemy"){
+            isDead = true;
+            gameOverText.SetActive(true);
+            restartButton.SetActive(true);
+        }
+    }
 }

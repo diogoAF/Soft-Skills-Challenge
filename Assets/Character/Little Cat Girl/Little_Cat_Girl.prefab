@@ -748,7 +748,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -789,6 +789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  speed: 10
   anime: {fileID: 95539518672861730}
   jumpHeight: {x: 0, y: 8}
   rb: {fileID: 2062796052}
@@ -968,7 +969,7 @@ GameObject:
   - component: {fileID: 2062796052}
   m_Layer: 0
   m_Name: Little_Cat_Girl
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

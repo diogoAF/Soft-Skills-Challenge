@@ -10,8 +10,13 @@ public class EnemyWhiteYeti : MonoBehaviour
     protected int direction = 1;
     protected bool changeDirection = false;
     private bool facingLeft = false;
+    protected bool isDead = false;
+    protected int playerLayer, myLayer;
+    protected CapsuleCollider2D myCollider2D;
     protected SpriteRenderer rendererRef; 
     protected Rigidbody2D rb;
+    public Animator anime;
+    public Player player;
 
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     private Vector3 m_Velocity = Vector3.zero;
@@ -21,6 +26,10 @@ public class EnemyWhiteYeti : MonoBehaviour
  
         rendererRef = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        anime = GetComponent<Animator>();
+        myCollider2D = GetComponent<CapsuleCollider2D>();
+
+        myLayer = this.gameObject.layer;
 
         rightLimit = transform.position.x + maxMoviment;
         leftLimit = transform.position.x - maxMoviment;
@@ -29,7 +38,7 @@ public class EnemyWhiteYeti : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        Move();
+        if(!isDead) Move();
     }
 
     private void Move(){
@@ -71,4 +80,27 @@ public class EnemyWhiteYeti : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    void OnCollisionEnter2D(Collision2D col){
+        if(col.gameObject.tag == "Player"){
+            if(player.isPlayerAttacking()){
+                Die();
+            }
+        }
+    }
+
+    void Die(){
+        isDead = true;
+        playerLayer = player.gameObject.layer;
+        anime.Play("Death");
+        myCollider2D.size = new Vector2(0.5f,0.5f);
+        StartCoroutine("Dying");
+    }
+
+    IEnumerator Dying(){
+        Physics2D.IgnoreLayerCollision(playerLayer, myLayer, true);
+        yield return new WaitForSeconds(3f);
+        Physics2D.IgnoreLayerCollision(playerLayer, myLayer, false);
+        Destroy(this.gameObject);
+    }
 }

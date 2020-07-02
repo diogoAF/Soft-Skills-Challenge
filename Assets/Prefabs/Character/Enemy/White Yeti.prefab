@@ -155,4 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoviment: 5
+  anime: {fileID: 4893963479968447154}
+  player: {fileID: 0}
   m_MovementSmoothing: 0.05

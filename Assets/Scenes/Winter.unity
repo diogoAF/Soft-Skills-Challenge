@@ -4049,6 +4049,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1324600188}
     m_Modifications:
+    - target: {fileID: 7637279095569494227, guid: 28541fd67341a4d49b2951219f34a7df,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1297998011}
     - target: {fileID: 7637279095569494228, guid: 28541fd67341a4d49b2951219f34a7df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5348,6 +5353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: White Yeti
       objectReference: {fileID: 0}
+    - target: {fileID: 4893963479968447167, guid: a6e91f654361a744798af2b23c8bb84f,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1297998011}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6e91f654361a744798af2b23c8bb84f, type: 3}
 --- !u!1 &140102007
@@ -37328,6 +37338,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1297998011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 595542164, guid: eef7dbc3fcb9a6b4db5e157a8e96c3df,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556473685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd2b6ba1ad1a754e844a28517e277bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1298775843
 GameObject:
   m_ObjectHideFlags: 0
@@ -41770,6 +41792,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1011609870}
     m_Modifications:
+    - target: {fileID: 7637279095569494227, guid: 28541fd67341a4d49b2951219f34a7df,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1297998011}
     - target: {fileID: 7637279095569494228, guid: 28541fd67341a4d49b2951219f34a7df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -44835,11 +44862,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4497445806554122, guid: eef7dbc3fcb9a6b4db5e157a8e96c3df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.75
+      value: 11.3
       objectReference: {fileID: 0}
     - target: {fileID: 4497445806554122, guid: eef7dbc3fcb9a6b4db5e157a8e96c3df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.75
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4497445806554122, guid: eef7dbc3fcb9a6b4db5e157a8e96c3df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48972,6 +48999,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: White Yeti (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4893963479968447167, guid: a6e91f654361a744798af2b23c8bb84f,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1297998011}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6e91f654361a744798af2b23c8bb84f, type: 3}
 --- !u!4 &1719918282 stripped
@@ -60152,6 +60184,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: White Yeti
       objectReference: {fileID: 0}
+    - target: {fileID: 4893963479968447167, guid: a6e91f654361a744798af2b23c8bb84f,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1297998011}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6e91f654361a744798af2b23c8bb84f, type: 3}
 --- !u!1001 &5993488743811855668
@@ -60166,6 +60203,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candy
       objectReference: {fileID: 0}
+    - target: {fileID: 5993488742357209842, guid: 1906ca0312d8df644b13ef58fe02ad80,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1297998011}
     - target: {fileID: 5993488742357209855, guid: 1906ca0312d8df644b13ef58fe02ad80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -60305,6 +60347,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1847621130}
     m_Modifications:
+    - target: {fileID: 7637279095569494227, guid: 28541fd67341a4d49b2951219f34a7df,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1297998011}
     - target: {fileID: 7637279095569494228, guid: 28541fd67341a4d49b2951219f34a7df,
         type: 3}
       propertyPath: m_LocalPosition.x

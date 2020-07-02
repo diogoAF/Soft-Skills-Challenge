@@ -115,9 +115,13 @@ public class Player : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col){
         if(!isDead){
             if(col.gameObject.tag == "Enemy"){
-                health -= 1;
-                enemyLayer = col.gameObject.layer;
-                anime.Play("get_hit");
+                
+                if(!isAttacking){
+                   health -= 1;
+                    enemyLayer = col.gameObject.layer;
+                    anime.Play("get_hit");
+                } 
+                
                 switch(health) {
                     case 2:
                         health_3.gameObject.SetActive(false);
@@ -146,5 +150,9 @@ public class Player : MonoBehaviour {
         yield return new WaitForSeconds(3f);
         Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false);
         coroutineAllowed = true;
+    }
+
+    public bool isPlayerAttacking() {
+        return isAttacking;
     }
 }

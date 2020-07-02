@@ -36,11 +36,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Character\Sepiroth\Demo\Scripts\CharacterController2D.cs" />
-     <Compile Include="Assets\Character\Sepiroth\Demo\Scripts\FlyingPlayerController.cs" />
-     <Compile Include="Assets\Character\Sepiroth\Demo\Scripts\FollowCamera.cs" />
-     <Compile Include="Assets\Character\Sepiroth\Demo\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Character\Sepiroth\Demo\Scripts\SceneSelecter.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\EnemyCandy.cs" />
      <Compile Include="Assets\Scripts\EnemyDino.cs" />

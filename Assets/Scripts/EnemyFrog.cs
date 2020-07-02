@@ -5,14 +5,18 @@ using UnityEngine;
 public class EnemyFrog : MonoBehaviour
 {
     public int maxMoviment = 5;
-    public float velocity = 5f;
     protected float rightLimit; 
     protected float leftLimit; 
     protected int direction = -1;
     protected bool changeDirection = false;
     private bool facingLeft = true;
+    protected bool isDead = false;
+    protected int playerLayer, myLayer;
+    protected CapsuleCollider2D myCollider2D;
     protected SpriteRenderer rendererRef; 
     protected Rigidbody2D rb;
+    public Animator anime;
+    public Player player;
 
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     private Vector3 m_Velocity = Vector3.zero;
@@ -22,6 +26,10 @@ public class EnemyFrog : MonoBehaviour
  
         rendererRef = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        anime = GetComponent<Animator>();
+        myCollider2D = GetComponent<CapsuleCollider2D>();
+
+        myLayer = this.gameObject.layer;
 
         rightLimit = transform.position.x + maxMoviment;
         leftLimit = transform.position.x - maxMoviment;
@@ -30,7 +38,7 @@ public class EnemyFrog : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        Move();
+        if(!isDead) Move();
     }
 
     private void Move(){
@@ -41,7 +49,7 @@ public class EnemyFrog : MonoBehaviour
         }
 
         // Move the character by finding the target velocity
-        Vector3 targetVelocity = new Vector2(direction * velocity, rb.velocity.y);
+        Vector3 targetVelocity = new Vector2(direction * 3f, rb.velocity.y);
         // And then smoothing it out and applying it to the character
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
     }
@@ -72,4 +80,28 @@ public class EnemyFrog : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    void OnCollisionEnter2D(Collision2D col){
+        if(col.gameObject.tag == "Player"){
+            if(player.isPlayerAttacking()){
+                Die();
+            }
+        }
+    }
+
+    void Die(){
+        isDead = true;
+        playerLayer = player.gameObject.layer;
+        anime.Play("Death");
+        //myCollider2D.size = new Vector2(0.5f,0.5f);
+        StartCoroutine("Dying");
+    }
+
+    IEnumerator Dying(){
+        Physics2D.IgnoreLayerCollision(playerLayer, myLayer, true);
+        yield return new WaitForSeconds(0.7f);
+        Physics2D.IgnoreLayerCollision(playerLayer, myLayer, false);
+        Destroy(this.gameObject);
+    }
+
 }

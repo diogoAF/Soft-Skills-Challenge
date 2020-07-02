@@ -134,9 +134,7 @@ public class Player : MonoBehaviour {
                     case 0:
                         health_1.gameObject.SetActive(false);
                         if(coroutineAllowed) StartCoroutine("Immortal");
-                        isDead = true;
-                        gameOverText.SetActive(true);
-                        restartButton.SetActive(true);
+                        Die();
                         break;
                 }
             }
@@ -152,7 +150,20 @@ public class Player : MonoBehaviour {
         coroutineAllowed = true;
     }
 
+    protected void Die(){
+        isDead = true;
+        health = 0;
+        gameOverText.SetActive(true);
+        restartButton.SetActive(true);
+    }
+
     public bool isPlayerAttacking() {
         return isAttacking;
+    }
+
+    void OnTriggerEnter2D(Collider2D col){
+        if(col.tag == "Trap"){
+            Die();
+        }
     }
 }

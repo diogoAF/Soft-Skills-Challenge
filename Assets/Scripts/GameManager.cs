@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    protected string curSceneName = SceneManager.GetActiveScene().name;
+    protected string curSceneName;
     
     // Start is called before the first frame update
     void Start(){
-        
+        curSceneName = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void EndSceneQuiz(){
-        curSceneName = SceneManager.GetActiveScene().name;
 
         if(curSceneName == "Forest"){
             SceneManager.LoadScene("Winter");

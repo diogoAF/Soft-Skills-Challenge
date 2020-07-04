@@ -20,13 +20,28 @@ public class QuizController : MonoBehaviour{
     protected int curIndex = 0;
     protected int score = 0; 
     protected string curSceneName;
+    protected bool objCreated = false;
     // Start is called before the first frame update
     void Start(){
+
+        if(!objCreated){
+            DontDestroyOnLoad(this.gameObject);
+            objCreated = true;
+            answeredQuetions = new ArrayList();
+            initQuestions();
+            EventManager.StartListening("start_quiz", ShowQuiz);
+        } else {
+            buttonA.enabled = true;
+            buttonB.enabled = true;
+        }
+
         mainCanvas.SetActive(false);
         secondCanvas.SetActive(false);
-        answeredQuetions = new ArrayList();
-        initQuestions();
-        EventManager.StartListening("start_quiz", ShowQuiz);
+        Debug.Log("SCORE: "+score);
+    }
+
+    void Awake(){
+
     }
 
     protected void ShowQuiz(){

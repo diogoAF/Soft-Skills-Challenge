@@ -21,8 +21,25 @@ public class QuizController : MonoBehaviour{
     protected int score = 0; 
     protected string curSceneName;
     protected bool objCreated = false;
-    // Start is called before the first frame update
-    void Start(){
+
+    void Awake(){
+        curSceneName = SceneManager.GetActiveScene().name;
+
+        DontDestroyOnLoad(this.gameObject);
+        objCreated = true;
+        answeredQuetions = new ArrayList();
+        initQuestions();
+        EventManager.StartListening("start_quiz", ShowQuiz);
+
+        mainCanvas.SetActive(false);
+        secondCanvas.SetActive(false);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded (Scene scene, LoadSceneMode mode) {
+        Debug.Log("SCORE: "+score);
+        curSceneName = scene.name;
 
         if(!objCreated){
             DontDestroyOnLoad(this.gameObject);
@@ -31,18 +48,22 @@ public class QuizController : MonoBehaviour{
             initQuestions();
             EventManager.StartListening("start_quiz", ShowQuiz);
         } else {
+
+            if(curSceneName == "Winter"){
+                Vector3 newPosition = this.gameObject.transform.position;
+                newPosition.x = 474.43f;
+                newPosition.y = 2.2f;
+                newPosition.z = 90f;
+                this.gameObject.transform.position = newPosition;
+            }
+
+            mainCanvas.SetActive(false);
+            secondCanvas.SetActive(false);
             buttonA.enabled = true;
             buttonB.enabled = true;
         }
 
-        mainCanvas.SetActive(false);
-        secondCanvas.SetActive(false);
-        Debug.Log("SCORE: "+score);
-    }
-
-    void Awake(){
-
-    }
+    }   
 
     protected void ShowQuiz(){
         mainCanvas.SetActive(true);
@@ -59,7 +80,6 @@ public class QuizController : MonoBehaviour{
     }
 
     public bool isQuestionsFinished(){
-        curSceneName = SceneManager.GetActiveScene().name;
 
         if(curSceneName == "Forest"){
             return curIndex == ((questions.Count/2) -1);

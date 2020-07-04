@@ -5,15 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     protected string curSceneName;
-    
-    // Start is called before the first frame update
-    void Start(){
-        curSceneName = SceneManager.GetActiveScene().name;
+    protected bool objCreated = false;
+
+    void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // Update is called once per frame
-    void Update(){
-        
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+        if(!objCreated){
+            DontDestroyOnLoad(this.gameObject);
+            objCreated = true;
+        }
+
+        curSceneName = scene.name;
+    }
+
+    void OnDisable(){
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void EndSceneQuiz(){

@@ -1,17 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class LimiterController : MonoBehaviour{
-    // Start is called before the first frame update
-    void Start(){
-        
+    protected bool objCreated = false;
+
+    void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // Update is called once per frame
-    void Update(){
-        
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+        if(!objCreated){
+            DontDestroyOnLoad(this.gameObject);
+            objCreated = true;
+        } else {
+            if(SceneManager.GetActiveScene().name == "Winter"){
+                Vector3 newPosition = this.gameObject.transform.position;
+                newPosition.x = 462.98f;
+                newPosition.y = -2.39f;
+                newPosition.z = -81.115f;
+                this.gameObject.transform.position = newPosition;
+            }
+        }
+    }
+
+    void OnDisable(){
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
      void OnTriggerEnter2D(Collider2D col){

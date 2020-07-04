@@ -8,6 +8,8 @@ public class CameraFollow : MonoBehaviour{
     public float maxBottomY = -3.5f;
     public int ajustX = 5;
     public int ajustY = 3;
+    public int fixedAjustX = 7;
+    public int fixedAjustY = 5;
     protected float fixedX;
     protected bool cameraCanMove = true;
 
@@ -28,7 +30,7 @@ public class CameraFollow : MonoBehaviour{
                 this.transform.position = new Vector3(fixedX, maxBottomY, this.transform.position.z);
             }
         } else {
-            this.transform.position = new Vector3(followTransform.position.x +7, followTransform.position.y + 5, this.transform.position.z);
+            this.transform.position = new Vector3(followTransform.position.x + fixedAjustX, followTransform.position.y + fixedAjustY, this.transform.position.z);
         }
         
         

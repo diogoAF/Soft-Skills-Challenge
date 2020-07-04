@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\LimiterController.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\Question.cs" />
+     <Compile Include="Assets\Scripts\QuizController.cs" />
      <Compile Include="Assets\Scripts\RestartButtonScript.cs" />
      <None Include="Assets\Character\Sepiroth\LICENSE.txt" />
      <None Include="Assets\Character\Sepiroth\README.txt" />

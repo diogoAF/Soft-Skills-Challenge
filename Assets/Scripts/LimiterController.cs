@@ -4,7 +4,6 @@ using UnityEngine;
 
 
 public class LimiterController : MonoBehaviour{
-    public GameManager gameManager;
     // Start is called before the first frame update
     void Start(){
         
@@ -19,6 +18,7 @@ public class LimiterController : MonoBehaviour{
         if(col.tag == "Player"){
             EventManager.TriggerEvent("stop_player");
             EventManager.TriggerEvent("zoom_out_camera");
+            EventManager.TriggerEvent("start_quiz");
         }
     }
 }

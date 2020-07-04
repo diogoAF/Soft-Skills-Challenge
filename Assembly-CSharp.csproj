@@ -36,13 +36,18 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Answer.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\EnemyCandy.cs" />
      <Compile Include="Assets\Scripts\EnemyDino.cs" />
      <Compile Include="Assets\Scripts\EnemyFrog.cs" />
      <Compile Include="Assets\Scripts\EnemySaw.cs" />
      <Compile Include="Assets\Scripts\EnemyWhiteYeti.cs" />
+     <Compile Include="Assets\Scripts\EventManager.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\LimiterController.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Question.cs" />
      <Compile Include="Assets\Scripts\RestartButtonScript.cs" />
      <None Include="Assets\Character\Sepiroth\LICENSE.txt" />
      <None Include="Assets\Character\Sepiroth\README.txt" />

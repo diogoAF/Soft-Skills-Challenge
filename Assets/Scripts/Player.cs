@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour {
     protected int playerLayer, enemyLayer;
     protected bool coroutineAllowed = true;
     protected SpriteRenderer rendererRef;
+    protected bool canMove = true;
     private bool facingLeft = true;  // For determining which way the player is currently facing.
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     private Vector3 m_Velocity = Vector3.zero;
@@ -44,54 +46,56 @@ public class Player : MonoBehaviour {
         health_2.SetActive(true);
         health_3.SetActive(true);
 
+        // Escuta o evento de parar o player
+        EventManager.StartListening("stop_player", StopPlayer);
+
     }
 
     // Update is called once per frame
     void Update() {
-        Vector3 actualPosition = transform.position;
 
-        isRunning = false;
-        isAttacking = false;
+        if(canMove){
+            isRunning = false;
+            isAttacking = false;
 
-        // Verifica se está pulando ou caindo
-        if(rb.velocity.y == 0) {
-            isJumping = false;
+            // Verifica se está pulando ou caindo
+            if(rb.velocity.y == 0) {
+                isJumping = false;
+            }
+
+            // Death
+            if(health <= 0 || isDead) {
+                isDead = true;
+                anime.Play("die");
+                return;
+            }
+
+            // Jump
+            if(Input.GetKey(KeyCode.UpArrow) && rb.velocity.y == 0){
+                anime.Play("jump");
+                rb.AddForce(jumpHeight, ForceMode2D.Impulse);
+            }
+            
+
+            // Attacking
+            if(Input.GetKey(KeyCode.LeftControl)){
+                isAttacking = true;
+                //anime.Play("attack");
+            }
+
+            // Running
+            if(Input.GetKey(KeyCode.RightArrow)) {
+                Move(1);
+                if(facingLeft) Flip();
+            } else if(Input.GetKey(KeyCode.LeftArrow)) {
+                Move(-1);
+                if(!facingLeft) Flip();
+            }
+
+            // Setting Animator
+            anime.SetBool("isRunning", isRunning);
+            anime.SetBool("isAttacking", isAttacking);
         }
-
-        // Death
-        if(health <= 0 || isDead) {
-            isDead = true;
-            anime.Play("die");
-            return;
-        }
-
-        // Jump
-        if(Input.GetKey(KeyCode.UpArrow) && rb.velocity.y == 0){
-            anime.Play("jump");
-            rb.AddForce(jumpHeight, ForceMode2D.Impulse);
-        }
-        
-
-        // Attacking
-        if(Input.GetKey(KeyCode.LeftControl)){
-            isAttacking = true;
-            //anime.Play("attack");
-        }
-
-        // Running
-        if(Input.GetKey(KeyCode.RightArrow)) {
-            Move(1);
-            if(facingLeft) Flip();
-        } else if(Input.GetKey(KeyCode.LeftArrow)) {
-            Move(-1);
-            if(!facingLeft) Flip();
-        }
-
-        // Setting Animator
-        anime.SetBool("isRunning", isRunning);
-        anime.SetBool("isAttacking", isAttacking);
-
-        transform.position = actualPosition;  
     }
 
     private void Move(int direction){
@@ -165,5 +169,18 @@ public class Player : MonoBehaviour {
         if(col.tag == "Trap"){
             Die();
         }
+    }
+
+    void StopPlayer(){
+        canMove = false;
+        isRunning = false;
+        isAttacking = false;
+        isGettingHit = false;
+        rb.velocity = Vector2.zero;
+        // Setting Animator
+        anime.Play("idle");
+        anime.SetBool("isRunning", isRunning);
+        anime.SetBool("isAttacking", isAttacking);
+        anime.SetBool("isGettingHit", isGettingHit);
     }
 }

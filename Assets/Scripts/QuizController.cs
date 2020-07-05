@@ -103,6 +103,10 @@ public class QuizController : MonoBehaviour{
         SetNextQuestion();
     }
 
+    public int GetFinalScore(){
+        return score;
+    }
+
     protected void SetNextQuestion(){
         if(!isQuestionsFinished()){
             curIndex++;

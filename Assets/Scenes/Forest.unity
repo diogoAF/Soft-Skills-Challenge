@@ -57107,6 +57107,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 207106020604937909, guid: a6b9e2b7907469f4babd8bdf350734d8,
+        type: 3}
+      propertyPath: quizController
+      value: 
+      objectReference: {fileID: 6226500718596773208}
     - target: {fileID: 207106020604937910, guid: a6b9e2b7907469f4babd8bdf350734d8,
         type: 3}
       propertyPath: m_LocalPosition.x

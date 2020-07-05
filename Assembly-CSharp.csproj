@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Question.cs" />
      <Compile Include="Assets\Scripts\QuizController.cs" />
      <Compile Include="Assets\Scripts\RestartButtonScript.cs" />
+     <Compile Include="Assets\Scripts\ResultController.cs" />
      <None Include="Assets\Character\Sepiroth\LICENSE.txt" />
      <None Include="Assets\Character\Sepiroth\README.txt" />
     <Reference Include="UnityEngine">

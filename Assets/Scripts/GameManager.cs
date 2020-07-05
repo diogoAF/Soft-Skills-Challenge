@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    public QuizController quizController;
     protected string curSceneName;
     protected bool objCreated = false;
 
@@ -18,6 +20,10 @@ public class GameManager : MonoBehaviour {
         }
 
         curSceneName = scene.name;
+
+        if(curSceneName == "TheEnd"){
+            ShowFinalResult();
+        }
     }
 
     void OnDisable(){
@@ -29,7 +35,17 @@ public class GameManager : MonoBehaviour {
         if(curSceneName == "Forest"){
             SceneManager.LoadScene("Winter");
         } else if(curSceneName == "Winter") {
-            SceneManager.LoadScene("Cave");
+            SceneManager.LoadScene("TheEnd");
+        }
+    }
+
+    protected void ShowFinalResult(){
+        int finalScore = quizController.GetFinalScore();
+
+        if(finalScore < 54){
+            EventManager.TriggerEvent("result_analista_planejador");
+        } else {
+            EventManager.TriggerEvent("result_comunicador_executor");
         }
     }
 

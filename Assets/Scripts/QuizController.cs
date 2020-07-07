@@ -55,6 +55,12 @@ public class QuizController : MonoBehaviour{
                 newPosition.y = 2.2f;
                 newPosition.z = 90f;
                 this.gameObject.transform.position = newPosition;
+            } else if (curSceneName == "Cave"){
+                Vector3 newPosition = this.gameObject.transform.position;
+                newPosition.x = 203.27f;
+                newPosition.y = 9.52f;
+                newPosition.z = 90f;
+                this.gameObject.transform.position = newPosition;
             }
 
             mainCanvas.SetActive(false);
@@ -82,9 +88,11 @@ public class QuizController : MonoBehaviour{
     public bool isQuestionsFinished(){
 
         if(curSceneName == "Forest"){
-            return curIndex == ((questions.Count/2) -1);
+            return curIndex == 7;
+        } else if(curSceneName == "Winter") {
+            return curIndex == 14;
         } else {
-            return curIndex == (questions.Count -1);
+            return curIndex > 19;
         }
     }
 
@@ -108,8 +116,8 @@ public class QuizController : MonoBehaviour{
     }
 
     protected void SetNextQuestion(){
+        curIndex++;
         if(!isQuestionsFinished()){
-            curIndex++;
             SetCurrentQuestion();
         } else {
             buttonA.enabled = false;

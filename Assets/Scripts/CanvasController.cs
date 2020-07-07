@@ -21,6 +21,12 @@ public class CanvasController : MonoBehaviour{
                 newPosition.y = 1.8f;
                 newPosition.z = 0f;
                 this.gameObject.transform.position = newPosition;
+            } else if(SceneManager.GetActiveScene().name == "Cave"){
+                Vector3 newPosition = this.gameObject.transform.position;
+                newPosition.x = 203.09f;
+                newPosition.y = 9.68f;
+                newPosition.z = 0f;
+                this.gameObject.transform.position = newPosition;
             }
         }
     }

@@ -22,6 +22,12 @@ public class LimiterController : MonoBehaviour{
                 newPosition.y = -2.39f;
                 newPosition.z = -81.115f;
                 this.gameObject.transform.position = newPosition;
+            } else if(SceneManager.GetActiveScene().name == "Cave"){
+                Vector3 newPosition = this.gameObject.transform.position;
+                newPosition.x = 192.33f;
+                newPosition.y = 5.39f;
+                newPosition.z = -81.115f;
+                this.gameObject.transform.position = newPosition;
             }
         }
     }

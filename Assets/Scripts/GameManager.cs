@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour {
         if(curSceneName == "Forest"){
             SceneManager.LoadScene("Winter");
         } else if(curSceneName == "Winter") {
+            SceneManager.LoadScene("Cave");
+        } else if(curSceneName == "Cave") {
             SceneManager.LoadScene("TheEnd");
         }
     }
